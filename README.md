@@ -3,11 +3,7 @@
 
 
 ![CI](https://github.com/A-Random-Person-From-Earth/Week1/workflows/CI/badge.svg)
+In this repository I began with a simple hello world program and mode it more complex through a few structural changes to the repository
 
-Welcome!
-This repository tracks the eight-week internal **IT-camp** that will turn a simple “Hello World” into a mini-clone of production stack.
+1. First, I compartamentalized the main file to seperate the greeting logic.  The greeting logic is now stored in the internal/greet file.
 
-- [week01](week01/)   ← Go basics + CI
-- week02   ← HTTP server + Docker Compose
-- week03   ← PostgreSQL CRUD
-- To Be Continued...
