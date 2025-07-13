@@ -1,0 +1,3 @@
+port: ":9000"
+greeting: "yaml-user"
+timeout: "45s"

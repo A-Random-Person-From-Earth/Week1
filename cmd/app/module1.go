@@ -1,26 +1,22 @@
 package main
 
 import (
-	"fmt"
-	"github.com/A-Random-Person-From-Earth/go-camp/internal/greet"
-	"net/http"
+    "fmt"
+    "github.com/A-Random-Person-From-Earth/go-camp/internal/config"  
+    "github.com/A-Random-Person-From-Earth/go-camp/internal/server" 
 )
 
 func main() {
-	// Hello service that says hi to the world
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		name := r.URL.Query().Get("name")
-		message:= greet.Greet(name)
-		_, err := fmt.Fprint(w, message)
-if err != nil {
-    http.Error(w, "Failed to write response", http.StatusInternalServerError)
-    return
-}
-	})
-
-	fmt.Println("Starting on :8080")
-	err := http.ListenAndServe(":8080", nil)
-if err != nil {
-    fmt.Printf("Server failed to start: %v\n", err)
-}
+    
+    cfg, err := config.Load()
+    if err != nil {
+        fmt.Printf("Failed to load configuration: %v\n", err)
+        return
+    }
+    
+    
+    err = server.Start(cfg)
+    if err != nil {
+        fmt.Printf("Server failed to start: %v\n", err)
+    }
 }
