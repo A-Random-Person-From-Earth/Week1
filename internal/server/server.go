@@ -22,22 +22,22 @@ func Start(cfg config.Config) error {
         if err != nil {
             http.Error(w, "Failed to write response", http.StatusInternalServerError)
             return
-        }
+		}
     })
 
 
- http.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
-        w.WriteHeader(http.StatusOK)
-        fmt.Fprint(w, "OK")
-    })
-    
-    fmt.Printf("Starting server on %s\n", cfg.Port)
-    
-    server := &http.Server{
-        Addr:         cfg.Port,
-        ReadTimeout:  cfg.Timeout,
-        WriteTimeout: cfg.Timeout,
-    }
-    
-    return server.ListenAndServe()
+	 http.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		fmt.Fprint(w, "OK")
+	    })
+	    
+	    fmt.Printf("Starting server on %s\n", cfg.Port)
+	    
+	    server := &http.Server{
+		Addr:         cfg.Port,
+		ReadTimeout:  cfg.Timeout,
+		WriteTimeout: cfg.Timeout,
+	    }
+	    
+	    return server.ListenAndServe()
 }
