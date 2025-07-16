@@ -3,7 +3,6 @@ package server
 import (
     "fmt"
     "net/http"
-    "time"
     "github.com/A-Random-Person-From-Earth/go-camp/internal/greet"
     "github.com/A-Random-Person-From-Earth/go-camp/internal/config"
 )
