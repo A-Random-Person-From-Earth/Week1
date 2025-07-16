@@ -19,7 +19,7 @@ type Config struct{
 	Greeting  string
 	Timeout time.Duration
 }
-func Load() (server.Config, error) {
+func Load() (Config, error) {
     fileConfig := loadConfigFile("config.yaml")
     
     defaultPort := getEnvOrDefault("PORT", fileConfig.Port)
@@ -38,8 +38,7 @@ func Load() (server.Config, error) {
     
     flag.Parse()
     
-    // Step 5: Return final configuration
-    return server.Config{
+    return Config{
         Port:     *port,
         Greeting: *greeting,
         Timeout:  *timeout,
@@ -47,7 +46,6 @@ func Load() (server.Config, error) {
 }
 
 func loadConfigFile(filename string) FileConfig {
-    // Set hardcoded defaults
     defaults := FileConfig{
         Port:     ":8080",
         Greeting: "world",
