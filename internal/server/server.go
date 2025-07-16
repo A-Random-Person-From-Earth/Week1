@@ -5,15 +5,11 @@ import (
     "net/http"
     "time"
     "github.com/A-Random-Person-From-Earth/go-camp/internal/greet"
+    "github.com/A-Random-Person-From-Earth/go-camp/internal/config"
 )
 
-type Config struct {
-    Port     string
-    Greeting string
-    Timeout  time.Duration
-}
 
-func Start(cfg Config) error {
+func Start(cfg config.Config) error {
     http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
         name := r.URL.Query().Get("name")
         if name == "" {
